@@ -8,18 +8,25 @@ namespace Projeto_de_produtos
     public class Usuario
     {
         private int Codigo { get; set; }
-        private string ? Nome { get; set; }
-        private string ? Email { get; set; }
-        private string ? Senha { get; set; }
+        public string ? Nome { get; set; }
+        public string ? Email { get; set; }
+        public string ? Senha { get; set; }
         private DateTime DataCadastro;
-
-        public string Cadastrar(Usuario usuario)
+        public Usuario()
         {
-            return "";
+            Cadastrar();
         }
-        public string Deletar(Usuario usuario)
+        public void Cadastrar()
         {
-            return "";
+            this.Nome = "Pedro";
+            this.Email = "email";
+            this.Senha = "senha";
+            this.DataCadastro = DateTime.Now;
+            this.Codigo = 001;
+        }
+        public void Deletar(Usuario usuario)
+        {
+            
         }
     }
 }
