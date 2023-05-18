@@ -99,6 +99,7 @@ namespace Projeto_de_produtos
                         break;
 
                     case ConsoleKey.D5:
+                        p.ListarM();
                         m.Listar();
                         Console.WriteLine($"Pressionw ENTER para continuar");
                         Console.ReadLine();
@@ -108,7 +109,7 @@ namespace Projeto_de_produtos
                     case ConsoleKey.D6:
                         Console.WriteLine($"Digite o codigo do item que deseja apagar");
                         int codigo2 = int.Parse(Console.ReadLine()!);
-                        p.Deletar(codigo2);
+                        m.Deletar(codigo2);
                         Console.Clear();
                         break;
 

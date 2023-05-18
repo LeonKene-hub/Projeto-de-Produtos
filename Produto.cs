@@ -13,17 +13,13 @@ namespace Projeto_de_produtos
         private DateTime DataCadastro;
         private Marca marca = new Marca();
         Usuario usuario = new Usuario();
-        private string CadastradoPor;
+        private string ? CadastradoPor;
         private List<Produto> ListaDeProdutos = new List<Produto>();
 
-        public Produto()
-        {
-            
-        }
         public void Cadastrar()
         {
             Produto novoProduto = new Produto();
-            Marca m = new Marca();
+            Marca marcaNova = new Marca();
 
             Console.WriteLine($"Codigo do produto:");
             novoProduto.Codigo = int.Parse(Console.ReadLine()!);
@@ -37,9 +33,7 @@ namespace Projeto_de_produtos
             novoProduto.CadastradoPor = usuario.Nome!;
             novoProduto.DataCadastro = DateTime.Now;
 
-            m.NomeMarca = Console.ReadLine();
-            
-            
+            novoProduto.marca = marca.Checar();
 
             ListaDeProdutos.Add(novoProduto);
         }
@@ -51,22 +45,23 @@ namespace Projeto_de_produtos
 ===============================
 Codigo: {p.Codigo}
 Nome: {p.NomeProduto}
-Preco: {p.Preco}
-Marca: 
+Preco: {p.Preco:c}
+Marca: {p.marca.NomeMarca}
 Cadastro realizado por: {p.CadastradoPor}
 ===============================
                 ");
             }
-        if (ListaDeProdutos.Count() == 0)
-        {
-            Console.WriteLine($"Lista vazia..");
-        }
         }
         public void Deletar(int codigo)
         {
             Produto achado = new Produto();
             achado = ListaDeProdutos.Find(x => x.Codigo == codigo)!;
             ListaDeProdutos.Remove(achado);
+        }
+
+        public void ListarM()
+        {
+            marca.Listar();
         }
     }
 }
