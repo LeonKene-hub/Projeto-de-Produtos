@@ -51,7 +51,6 @@ namespace Projeto_de_produtos
         public void GerarMenu()
         {
             ConsoleKeyInfo tecla;
-            bool fechar = false;
             do
             {
 
@@ -99,7 +98,6 @@ namespace Projeto_de_produtos
                         break;
 
                     case ConsoleKey.D5:
-                        p.ListarM();
                         m.Listar();
                         Console.WriteLine($"Pressionw ENTER para continuar");
                         Console.ReadLine();
@@ -114,16 +112,17 @@ namespace Projeto_de_produtos
                         break;
 
                     case ConsoleKey.D0:
-                        fechar = true;
+                        Logado = false;
                         Console.Clear();
                         Console.WriteLine($"DESLIGADO");
                         break;
 
                     default:
+
                         Console.Clear();
                         break;
                 }
-            } while (fechar == false);
+            } while (Logado == true);
 
         }
     }

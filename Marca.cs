@@ -10,39 +10,25 @@ namespace Projeto_de_produtos
         public int Codigo { get; set; }
         public string? NomeMarca { get; set; }
         public DateTime DataCadastro;
-        List<Marca> Marcas = new List<Marca>();
+        public static List<Marca> Marcas = new List<Marca>();
         public Marca()
         {
 
         }
-        public void Cadastrar()
-        {
-            Marca novaMarca = new Marca();
 
-            Console.WriteLine($"Digite o codigo da nova marca:");
-            novaMarca.Codigo = int.Parse(Console.ReadLine()!);
-
-            Console.WriteLine($"Digite o nome da nova marca:");
-            novaMarca.NomeMarca = Console.ReadLine();
-
-            novaMarca.DataCadastro = DateTime.Now;
-
-            Marcas.Add(novaMarca);
-        }
-
-        public Marca Checar()
+        public Marca Cadastrar()
         {
             Marca ver = new Marca();
 
             Console.WriteLine($"Digite o codigo da marca:");
-            int codigo1 = int.Parse(Console.ReadLine()!);
+            int codigo = int.Parse(Console.ReadLine()!);
             
-            ver = Marcas.Find(x => x.Codigo == codigo1)!;
+            ver = Marcas.Find(x => x.Codigo == codigo)!;
 
             if (ver == null)
             {
                 Marca nova = new Marca();
-                nova.Codigo = codigo1;
+                nova.Codigo = codigo;
                 nova.DataCadastro = DateTime.Now;
 
                 Console.WriteLine($"Digite o nome da marca:");
@@ -51,24 +37,29 @@ namespace Projeto_de_produtos
                 Marcas.Add(nova);
                 return nova;
             }
-            else if (ver.Codigo == codigo1)
+            else
             {
-                return ver;
+                Console.WriteLine($"Essa marca ja existe");
+                return new Marca();
             }
-            return new Marca();
 
         }
         public void Listar()
         {
             foreach (Marca m in Marcas)
             {
-                Console.WriteLine($"Codigo: {m.Codigo} - Nome da marca: {m.NomeMarca} - Data de cadastro: {m.DataCadastro}");
+                Console.WriteLine(@$"
+------------------------------------
+Codigo: {m.Codigo}
+Nome da marca: {m.NomeMarca}
+Data de cadastro: {m.DataCadastro}
+------------------------------------
+                ");
             }
         }
         public void Deletar(int codigo2)
         {
-            Marca achado = new Marca();
-            achado = Marcas.Find(x => x.Codigo == codigo2)!;
+            Marca achado = Marcas.Find(x => x.Codigo == codigo2)!;
             Marcas.Remove(achado);
         }
     }
